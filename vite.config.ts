@@ -1,6 +1,9 @@
 // vite.config.ts
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-import path from 'path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   root: 'src',
@@ -11,7 +14,10 @@ export default defineConfig({
     minify: 'esbuild', // Use esbuild for minification (default)
     assetsDir: 'assets',
     rollupOptions: {
-      input: path.resolve(__dirname, 'src/menu.html'),
+      input: {
+        main: resolve(__dirname, 'src/index.html'),
+        nested: resolve(__dirname, 'src/nested1/index.html'),
+      },
       output: {
         assetFileNames: 'assets/[name]-[hash][extname]' // Hashing for cache busting
       }
@@ -19,7 +25,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'), // Optional alias for cleaner imports
+      '@': resolve(__dirname, 'src'), // Optional alias for cleaner imports
     }
   },
   define: {
