@@ -3,7 +3,6 @@ interface Resource {
   title: string;
   description: string;
   iconClass: string;
-  color: string;
   available: boolean;
   url?: string;
 }
@@ -17,7 +16,8 @@ const Resources: Record<string, Resource> = {
     description:
       "Calculate drill depths, resource yields, and optimal configurations for the Mineshaft Drill",
     available: true,
-    url: "./calculator.html",
+    url: "./nested1/index.html",
+    iconClass: ''
   },
   productionCalculator: {
     id: "production-calculator",
@@ -25,6 +25,8 @@ const Resources: Record<string, Resource> = {
     description:
       "Calculate ratios and optimal production chain(s) for every item or fluid",
     available: false,
+    url: "./nested2/index.html",
+    iconClass: ''
   },
 };
 
@@ -45,7 +47,7 @@ function createIcon(iconClass: string): string {
 
 function createResourceCard(resource: Resource): HTMLElement {
   const card = document.createElement("div");
-  card.className = `resource-card ${resource.color} ${
+  card.className = `resource-card ${resource} ${
     !resource.available ? "unavailable" : ""
   }`;
 
@@ -60,7 +62,7 @@ function createResourceCard(resource: Resource): HTMLElement {
   card.innerHTML = `
     ${statusBadge}
     <div class="card-content">
-      <div class="icon-container ${resource.color}">
+      <div class="icon-container ${resource}">
         <span class="icon">${icon}</span>
       </div>
       <div class="card-text">
@@ -137,7 +139,7 @@ function renderResourceView(resource: Resource): void {
       
       <div class="resource-view">
         <div class="resource-header">
-          <div class="icon-container ${resource.color}">
+          <div class="icon-container ${resource}">
             <span class="icon">${icon}</span>
           </div>
           <div>

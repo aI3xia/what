@@ -2,7 +2,7 @@
   "name": "ts-vite-app",
   "version": "1.0.0",
   "description": "",
-  "main": "menu.ts",
+  "main": "index.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

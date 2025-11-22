@@ -9,13 +9,13 @@ import {
   type OilId,
   type DepthId,
   type DepthYield,
-} from "/nested1/mineshaft-calculator-data";
+} from "src\nested1\mineshaft-calculator-data.ts";
 
 function initBackButton() {
   const backButton = document.getElementById("back-button");
   if (backButton) {
     backButton.addEventListener("click", () => {
-      window.location.href = "./index.html";
+      window.location.href = "./src/index.html";
     });
   }
 }
